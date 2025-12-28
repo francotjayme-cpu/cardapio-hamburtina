@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Especial Virada de Ano 2025/2026 - Hamburtina</title>
+    <style>
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .page {
+                page-break-after: always;
+            }
+            .download-btn {
+                display: none;
+            }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #333;
+            line-height: 1.4;
+            padding: 20px;
+        }
+        
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+            padding: 15mm;
+        }
+        
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            color: #1a1a2e;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.6);
+        }
+        
+        .download-btn:active {
+            transform: translateY(0);
+        }
+        
+        .decorative-corner {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            opacity: 0.1;
+        }
+        
+        .corner-tl {
+            top: 0;
+            left: 0;
+            border-top: 3px solid #d4af37;
+            border-left: 3px solid #d4af37;
+        }
+        
+        .corner-tr {
+            top: 0;
+            right: 0;
+            border-top: 3px solid #d4af37;
+            border-right: 3px solid #d4af37;
+        }
+        
+        .corner-bl {
+            bottom: 0;
+            left: 0;
+            border-bottom: 3px solid #d4af37;
+            border-left: 3px solid #d4af37;
+        }
+        
+        .corner-br {
+            bottom: 0;
+            right: 0;
+            border-bottom: 3px solid #d4af37;
+            border-right: 3px solid #d4af37;
+        }
+        
+        .fireworks {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.15;
+            animation: twinkle 2s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.2; }
+        }
+        
+        .fw1 { top: 50px; right: 80px; color: #ff6b6b; }
+        .fw2 { top: 120px; left: 60px; color: #4ecdc4; animation-delay: 0.5s; }
+        .fw3 { bottom: 150px; right: 100px; color: #ffd93d; animation-delay: 1s; }
+        .fw4 { bottom: 200px; left: 80px; color: #95e1d3; animation-delay: 1.5s; }
+        
+        header {
+            text-align: center;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo {
+            font-size: 38px;
+            font-weight: bold;
+            color: #1a1a2e;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-family: 'Arial Black', sans-serif;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #d4af37;
+            font-style: italic;
+            margin-bottom: 3px;
+            font-weight: bold;
+        }
+        
+        .year {
+            font-size: 24px;
+            color: #ff6b6b;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-top: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .divider {
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+            margin: 12px auto;
+        }
+        
+        .section {
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            color: #1a1a2e;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 8px;
+            background: linear-gradient(to right, #f8f9fa, #fff);
+            border-left: 3px solid #d4af37;
+            transition: all 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .item-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: #1a1a2e;
+            flex: 1;
+        }
+        
+        .item-description {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+            margin-top: 3px;
+        }
+        
+        .item-price {
+            font-size: 16px;
+            color: #d4af37;
+            font-weight: bold;
+            min-width: 90px;
+            text-align: right;
+        }
+        
+        .drinks-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        
+        .drink-category {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 6px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .drink-category-title {
+            font-size: 14px;
+            color: #1a1a2e;
+            font-weight: bold;
+            margin-bottom: 8px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 4px;
+        }
+        
+        .drink-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            padding: 5px;
+            background: #fff;
+            border-radius: 3px;
+        }
+        
+        .drink-name {
+            font-size: 12px;
+            color: #333;
+        }
+        
+        .drink-price {
+            font-size: 13px;
+            color: #d4af37;
+            font-weight: bold;
+        }
+        
+        .special-note {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 15px 0;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .special-note::before {
+            content: "★";
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+        }
+        
+        .special-note::after {
+            content: "★";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 12px;
+            border-top: 2px solid #d4af37;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .social {
+            font-size: 15px;
+            color: #1a1a2e;
+            font-weight: bold;
+        }
+        
+        .service-charge {
+            font-size: 12px;
+            color: #666;
+            margin-top: 6px;
+            font-style: italic;
+        }
+        
+        .celebration-text {
+            font-size: 14px;
+            color: #d4af37;
+            margin-top: 8px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="decorative-corner corner-tl"></div>
+        <div class="decorative-corner corner-tr"></div>
+        <div class="decorative-corner corner-bl"></div>
+        <div class="decorative-corner corner-br"></div>
+        
+        <div class="fireworks fw1">✨</div>
+        <div class="fireworks fw2">🎆</div>
+        <div class="fireworks fw3">✨</div>
+        <div class="fireworks fw4">🎆</div>
+        
+        <header>
+            <div class="logo">HAMBURTINA</div>
+            <div class="subtitle">Cardápio Especial</div>
+            <div class="year">VIRADA DE ANO 2025/2026</div>
+        </header>
+        
+        <div class="divider"></div>
+        
+        <div class="special-note">
+            VALOR DA MESA: R$ 100,00
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">🍽️ Pratos Especiais</h2>
+            
+            <div class="menu-item">
+                <div>
+                    <div class="item-name">Isca de Peixe</div>
+                    <div class="item-description">Porção generosa de peixe empanado crocante</div>
+                </div>
+                <div class="item-price">R$ 69,00</div>
+            </div>
+            
+            <div class="menu-item">
+                <div>
+                    <div class="item-name">Isca de Frango</div>
+                    <div class="item-description">Pedaços suculentos de frango empanado</div>
+                </div>
+                <div class="item-price">R$ 55,00</div>
+            </div>
+            
+            <div class="menu-item">
+                <div>
+                    <div class="item-name">Batatas Fritas</div>
+                    <div class="item-description">Porção crocante de batatas fritas</div>
+                </div>
+                <div class="item-price">R$ 39,00</div>
+            </div>
+            
+            <div class="menu-item">
+                <div>
+                    <div class="item-name">Carne Acebolada</div>
+                    <div class="item-description">Carne suculenta com cebolas douradas</div>
+                </div>
+                <div class="item-price">R$ 65,00</div>
+            </div>
+            
+            <div class="menu-item">
+                <div>
+                    <div class="item-name">Linguiça com Batatas e Ovo</div>
+                    <div class="item-description">Linguiça artesanal acompanhada de batatas e ovo</div>
+                </div>
+                <div class="item-price">R$ 49,00</div>
+            </div>
+            
+            <div class="menu-item">
+                <div>
+                    <div class="item-name">Salpicão de Frango</div>
+                    <div class="item-description">Porção para compartilhar - salada especial</div>
+                </div>
+                <div class="item-price">R$ 69,00</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">🎉 Tábuas Especiais para Dois</h2>
+            
+            <div class="menu-item">
+                <div>
+                    <div class="item-name">Tábua de Frios Especial</div>
+                    <div class="item-description">Sanduíches variados, enroladinhos, canapés, queijos, frios variados, pães para acompanhar, picles, azeitonas, berinjela e escabeche</div>
+                </div>
+                <div class="item-price">R$ 120,00</div>
+            </div>
+            
+            <div class="menu-item">
+                <div>
+                    <div class="item-name">Tábua de Churrasco</div>
+                    <div class="item-description">Costela de porco, carne bovina, coxa e sobrecoxa, linguiça, acompanhada de arroz, farofa e batatas fritas</div>
+                </div>
+                <div class="item-price">R$ 169,00</div>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="section">
+            <h2 class="section-title">🍺 Bebidas</h2>
+            
+            <div class="drinks-grid">
+                <div class="drink-category">
+                    <div class="drink-category-title">Cervejas 600ml</div>
+                    <div class="drink-item">
+                        <span class="drink-name">Petra</span>
+                        <span class="drink-price">R$ 13,00</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Amstel / Brahma / Original</span>
+                        <span class="drink-price">R$ 15,00</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Stella Artois</span>
+                        <span class="drink-price">R$ 18,00</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Heineken</span>
+                        <span class="drink-price">R$ 20,00</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Black Princess Artesanal</span>
+                        <span class="drink-price">R$ 25,00</span>
+                    </div>
+                </div>
+                
+                <div class="drink-category">
+                    <div class="drink-category-title">Latas</div>
+                    <div class="drink-item">
+                        <span class="drink-name">Amstel</span>
+                        <span class="drink-price">R$ 7,00</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Heineken</span>
+                        <span class="drink-price">R$ 12,00</span>
+                    </div>
+                </div>
+                
+                <div class="drink-category">
+                    <div class="drink-category-title">Long Neck</div>
+                    <div class="drink-item">
+                        <span class="drink-name">Stella Artois</span>
+                        <span class="drink-price">R$ 12,00</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Heineken</span>
+                        <span class="drink-price">R$ 15,00</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Corona</span>
+                        <span class="drink-price">R$ 15,00</span>
+                    </div>
+                </div>
+                
+                <div class="drink-category">
+                    <div class="drink-category-title">Vinhos & Espumantes</div>
+                    <div class="drink-item">
+                        <span class="drink-name">Malbec</span>
+                        <span class="drink-price">R$ 15,00</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Tempranillo</span>
+                        <span class="drink-price">R$ 15,00</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Chardonnay</span>
+                        <span class="drink-price">R$ 20,00</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Rosé</span>
+                        <span class="drink-price">R$ 20,00</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Branco Doce</span>
+                        <span class="drink-price">R$ 25,00</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Espumante</span>
+                        <span class="drink-price">R$ 25,00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <div class="social">@portohamburtina</div>
+            <div class="celebration-text">Feliz Ano Novo! 🎊✨🥂</div>
+            <div class="service-charge">Cobramos taxa de serviço de 10%</div>
+        </footer>
+    </div>
+    
+    <script>
+        window.onload = function() {
+            window.print();
+        };
+    </script>
+</body>
+</html>
